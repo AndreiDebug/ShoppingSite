@@ -12,6 +12,12 @@ function App() {
     setCartItems((prevCartItems) => ({ ...prevCartItems, [productId]: qty }));
   };
 
+  const removeFromCart = (productId) => {
+    const cartItemsCopy = { ...cartItems };
+    delete cartItemsCopy[productId];
+    setCartItems(cartItemsCopy);
+  };
+
   console.log(cartItems);
   return (
     <div className="App">
@@ -19,7 +25,12 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Shop AddToCart={addToCart} />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart CartItems={cartItems} RemoveFromCart={removeFromCart} />
+            }
+          />
           <Route path="/details" />
           {/* Detaliile fiecarui produs-content apge-ul */}
         </Routes>
