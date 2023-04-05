@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
-
+import axios from "axios";
 // 'https://fakestoreapi.com/products'
-const Shop = () => {
+const Shop = ({ AddToCart }) => {
   const [fake, setFake] = useState([]);
   // setFake= for updating the data fake=initial data
   useEffect(() => {
     fakeStore();
   }, []);
   const fakeStore = async () => {
-    const response = await fetch(
+    const response = await axios.get(
       "https://fakestoreapi.com/products/category/electronics"
     );
     // console.log(response);
-    const jsonData = await response.json(); //converting data into object
+    // const jsonData = await response.json(); //converting data into object
+
     // console.log(jsonData);
-    setFake(jsonData); //updating data
+    setFake(response.data); //updating data
   };
   // fakeStore();
 
@@ -26,16 +27,14 @@ const Shop = () => {
       <div className="container">
         {fake.map((values) => {
           return (
-            <>
-              <div className="box">
-                <img src={[values.image]} alt="" />
-                <div className="content">
-                  <h5 className="component_title">{[values.title]}</h5>
-                  {/* <p className="description">description</p> */}
-                  <button className="addBttn">Add to Cart</button>
-                </div>
+            <div className="box" key={values.id}>
+              <img src={[values.image]} alt="" />
+              <div className="content">
+                <h5 className="component_title">{[values.title]}</h5>
+                {/* <p className="description">description</p> */}
+                <button className="addBttn">Add to Cart</button>
               </div>
-            </>
+            </div>
           );
         })}
       </div>
