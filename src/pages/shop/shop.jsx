@@ -32,7 +32,11 @@ const Shop = ({ AddToCart }) => {
               <div className="content">
                 <h5 className="component_title">{[values.title]}</h5>
                 {/* <p className="description">description</p> */}
-                <button className="addBttn">Add to Cart</button>
+                <button
+                  onClick={() => AddToCart(values.id)}
+                  className="addBttn">
+                  Add to Cart
+                </button>
               </div>
             </div>
           );
