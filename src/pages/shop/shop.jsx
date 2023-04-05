@@ -8,7 +8,9 @@ const Shop = () => {
     fakeStore();
   }, []);
   const fakeStore = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
+    const response = await fetch(
+      "https://fakestoreapi.com/products/category/electronics"
+    );
     // console.log(response);
     const jsonData = await response.json(); //converting data into object
     // console.log(jsonData);
@@ -19,18 +21,19 @@ const Shop = () => {
   // ----------------------------------------
   return (
     <>
-      <h2>Fake API SHOP</h2>
+      <h2 className="title">Techno-Shop</h2>
 
       <div className="container">
         {fake.map((values) => {
           return (
             <>
               <div className="box">
-                <div className="content">
-                  <h5>{[values.title]}</h5>
-                  <p>description</p>
-                </div>
                 <img src={[values.image]} alt="" />
+                <div className="content">
+                  <h5 className="component_title">{[values.title]}</h5>
+                  {/* <p className="description">description</p> */}
+                  <button className="addBttn">Add to Cart</button>
+                </div>
               </div>
             </>
           );
