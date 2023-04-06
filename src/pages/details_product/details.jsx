@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // 'https://fakestoreapi.com/products'
-const Shop = ({ CartItems, RemoveFromCart }) => {
-  const [products, setProducts] = useState([]);
+const Shop = ({ AddToCart }) => {
+  const [fake, setFake] = useState([]);
   // setFake= for updating the data fake=initial data
   useEffect(() => {
-    getProducts();
-  }, [CartItems]);
-  const getProducts = async () => {
+    fakeStore();
+  }, []);
+  const fakeStore = async () => {
     const response = await axios.get(
       "https://fakestoreapi.com/products/category/electronics"
     );
@@ -15,34 +15,27 @@ const Shop = ({ CartItems, RemoveFromCart }) => {
     // const jsonData = await response.json(); //converting data into object
 
     // console.log(jsonData);
-    setProducts(
-      response.data.filter((product) => {
-        return product.id in CartItems;
-      })
-    ); //updating data
+    setFake(response.data); //updating data
   };
   // fakeStore();
 
   // ----------------------------------------
   return (
     <>
-      <h2 className="title">Cart</h2>
+      <h2 className="title">Techno-Shop</h2>
 
       <div className="container">
-        {products.length === 0 && (
-          <img src="basket.svg" alt="Your cart is empty..." />
-        )}
-        {products.map((values) => {
+        {fake.map((values) => {
           return (
             <div className="box" key={values.id}>
               <img src={[values.image]} alt="" />
               <div className="content">
                 <h5 className="component_title">{[values.title]}</h5>
-                <p className="description">{CartItems[values["id"]]}</p>
+                {/* <p className="description">description</p> */}
                 <button
-                  onClick={() => RemoveFromCart(values.id)}
+                  onClick={() => AddToCart(values.id)}
                   className="addBttn">
-                  Remove from Cart
+                  Add to Cart
                 </button>
               </div>
             </div>

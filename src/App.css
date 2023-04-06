@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Clicker+Script&family=Edu+NSW+ACT+Foundation:wght@700&family=Island+Moments&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,800;0,900;1,100;1,200;1,300;1,400;1,700;1,800;1,900&family=Raleway:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,500;1,600;1,700;1,800;1,900&display=swap");
 .App {
   width: 100%;
-  /* height: auto; */
 
-  min-height: 50vh;
+  min-height: 70vh;
   font-family: "Raleway", sans-serif;
 }
-
+html {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: inherit;
+}
 body {
   padding: 0;
   margin: 0;
@@ -17,7 +21,7 @@ h2 {
   /* margin: 0 0 2em; */
 }
 .component_title {
-  font-size: 1.5vw;
+  font-size: 2.5rem;
   /* display: flex;
   align-items: last baseline; */
 }
@@ -30,20 +34,28 @@ h2 {
   align-items: center;
   /* position: relative;
   margin-left: 40%; */
-  font-size: 7vw;
+  font-size: 7rem;
 }
 .container {
-  max-width: 1500px;
+  max-width: 2000px;
   margin: 20px auto;
   display: flex;
   /* justify-content: center; */
   flex-wrap: wrap;
   border-radius: 7px;
 }
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .box {
+  display: flex;
+  flex-direction: column;
+
   background-color: white;
 
-  max-width: 300px;
+  max-width: 600px;
 
   margin: 10px;
   padding: 20px;
@@ -63,6 +75,7 @@ img {
   object-fit: contain;
 }
 .addBttn {
+  display: inline-block;
   background-color: transparent;
   border: 2px solid rgb(19, 19, 19);
   min-width: 100px;
@@ -71,9 +84,15 @@ img {
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 15px;
+  margin-top: auto;
+  align-self: flex-start;
 }
 .addBttn:hover {
   background-color: rgb(19, 19, 19);
   color: white;
   cursor: pointer;
+}
+.emptyCart {
+  font-weight: 500;
+  font-size: 20px;
 }
