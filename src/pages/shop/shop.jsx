@@ -37,6 +37,7 @@ const Shop = ({ AddToCart }) => {
                   className="addBttn">
                   Add to Cart
                 </button>
+                <h3>${values.price}</h3>
               </div>
             </div>
           );
